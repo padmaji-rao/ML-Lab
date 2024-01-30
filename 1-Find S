@@ -1,0 +1,14 @@
+import pandas as pd
+ds=pd.read_csv("C:\\Users\\21B91A1271\\Desktop\\dataset.csv")
+s=[]
+print(ds)
+for i in range(len(ds)):
+    record=list(ds.iloc[i])
+    if record[-1]==True :
+        if len(s)==0 :
+            s=record[:len(record)-1]
+        else :
+            for j in range(len(s)):
+                if record[j]!=s[j] :
+                    s[j]='-'
+print(s)
