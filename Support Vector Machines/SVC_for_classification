@@ -1,0 +1,19 @@
+import pandas as pd
+df=pd.read_csv("C:\\Users\\TEMP.SRKRIT.001\\Downloads\\Diabetes.csv")
+X=df.drop("Outcome",axis=1)
+Y=df["Outcome"]
+
+
+from sklearn.model_selection import train_test_split
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.3,random_state=1)
+
+
+from sklearn.svm import SVC
+m1=SVC(kernel="rbf")
+m1.fit(X_train,Y_train)
+m1_preds=m1.predict(X_test)
+
+
+from sklearn.metrics import classification_report
+report=classification_report(Y_test,m1_preds,target_names=["No Diabetes", "Diabetes"])
+print(report)
